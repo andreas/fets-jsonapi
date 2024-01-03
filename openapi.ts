@@ -52,7 +52,7 @@ export default {
         "type": "object",
         "properties": {
           "type": {
-            "const": "article",
+            "const": "article"
           },
           "id": {
             "type": "string"
@@ -75,17 +75,18 @@ export default {
             "properties": {
               "author": {
                 "type": "object",
-                "x-default": false,
+                "x-default": true,
                 "properties": {
                   "data": {
                     "type": "object",
+                    "required": ["type", "id"],
                     "x-default": true,
                     "properties": {
                       "type": {
                         "const": "user"
                       },
                       "id": {
-                        "type": "number"
+                        "type": "string"
                       }
                     }
                   }
@@ -97,15 +98,17 @@ export default {
       },
       "user": {
         "type": "object",
+        "required": ["type", "id", "attributes", "relationships"],
         "properties": {
           "type": {
-            "const": "user",
+            "const": "user"
           },
           "id": {
             "type": "string"
           },
           "attributes": {
             "type": "object",
+            "required": ["email", "name"],
             "properties": {
               "email": {
                 "type": "string",
@@ -128,12 +131,13 @@ export default {
                     "type": "array",
                     "items": {
                       "type": "object",
+                      "required": ["type", "id"],
                       "properties": {
                         "type": {
                           "const": "article"
                         },
                         "id": {
-                          "type": "number"
+                          "type": "string"
                         }
                       }
                     }
